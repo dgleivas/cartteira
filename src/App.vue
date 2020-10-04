@@ -1,32 +1,38 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <base-spinner></base-spinner>
+    <Mensagens></Mensagens>
+    <router-view></router-view>
   </div>
 </template>
 
-<style>
+<script>
+import BaseSpinner from "./components/global/BaseSpinner";
+import Mensagens from "./components/global/mensagens";
+
+export default {
+  components: {
+    BaseSpinner,
+    Mensagens
+  },
+  mounted() {
+    if (this.$store.state.email == null) {
+      this.$firebase.auth().signOut();
+      this.$router.push({ name: "Login" });
+      this.$root.$emit("Spinner::hide");
+    } else {
+      this.$firebase.auth().onAuthStateChanged(user => {
+        window.uid = user ? user.uid : null;
+        this.$router.push({ name: window.uid ? "Home" : "Login" });
+        this.$root.$emit("Spinner::hide");
+      });
+    }
+  }
+};
+</script>
+
+<style scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  height: 80vh;
 }
 </style>
