@@ -112,6 +112,7 @@ export default {
   },
   created() {
     this.getData();
+    console.log(this.cartteira);
   },
   computed: {
     geraTotais() {
@@ -167,13 +168,13 @@ export default {
           collec = "cotacoes_fundos";
           break;
         case "Ações Americanas":
-          collec = "cotacoes_acoeseua";
+          collec = "cotacoes_usa";
           break;
         case "Reits":
-          collec = "cotacoes_reits";
+          collec = "cotacoes_usa";
           break;
         case "ETFs":
-          collec = "cotacoes_etfs";
+          collec = "cotacoes_usa";
           break;
       }
       const db = this.$firebase

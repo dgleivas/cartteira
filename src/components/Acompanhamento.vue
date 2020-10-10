@@ -25,7 +25,7 @@ export default {
         this.$router.push({
           name: "ConteudoAcompanhamento",
           params: { subrota: oldValue.params.subrota }
-        })
+        });
       }
     }
   },
@@ -37,6 +37,4 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>
+<style scoped></style>

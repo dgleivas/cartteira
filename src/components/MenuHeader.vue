@@ -7,10 +7,14 @@
             <router-link :to="{ name: 'Analise' }" exact>Analises</router-link>
           </li>
           <li class="nav-item mr-3">
-            <router-link :to="{ name: 'Acompanhamento' }" exact>Acompanhamento</router-link>
+            <router-link :to="{ name: 'Acompanhamento' }" exact
+              >Acompanhamento</router-link
+            >
           </li>
           <li class="nav-item mr-3">
-            <router-link :to="{ name: 'Orcamento' }" exact>Orçamento</router-link>
+            <router-link :to="{ name: 'Orcamento' }" exact
+              >Orçamento</router-link
+            >
           </li>
         </ul>
       </div>

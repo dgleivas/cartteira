@@ -5,7 +5,13 @@
       <div class="row my-3">
         <div class="input-group col-12 mb-3">
           <label class="mr-3">Data Atualização: &nbsp;</label>
-          <input type="date" v-model="data" class="form-control" id="inputCodigo" size="20" />
+          <input
+            type="date"
+            v-model="data"
+            class="form-control"
+            id="inputCodigo"
+            size="20"
+          />
         </div>
         <div class="mb-3 col-2 text-primary">Cotação</div>
         <div class="mb-3 col-2 text-primary">Cadastro</div>
@@ -15,7 +21,7 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cotacao(acoesb3,'cotacoes_acoesbrl','Ações B3')"
+            @click="cotacao(acoesb3, 'cotacoes_acoesbrl', 'Ações B3')"
           >
             <i class="fas fa-file-upload text-primary"></i>
           </button>
@@ -24,7 +30,7 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cadastroAtivos(cadacoesb3, 'acoesbrl','Cadastro Ações B3')"
+            @click="cadastroAtivos(cadacoesb3, 'acoesbrl', 'Cadastro Ações B3')"
           >
             <i class="fas fa-file-upload text-primary"></i>
           </button>
@@ -34,7 +40,7 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cotacao(fundos,'cotacoes_fundos','Fundos Imobiliários')"
+            @click="cotacao(fundos, 'cotacoes_fundos', 'Fundos Imobiliários')"
           >
             <i class="fas fa-file-upload text-success"></i>
           </button>
@@ -43,7 +49,13 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cadastroAtivos(cadfundos,'fundos','Cadastro de Fundos Imobiliários')"
+            @click="
+              cadastroAtivos(
+                cadfundos,
+                'fundos',
+                'Cadastro de Fundos Imobiliários'
+              )
+            "
           >
             <i class="fas fa-file-upload text-success"></i>
           </button>
@@ -54,7 +66,7 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cotacao(reits,'cotacoes_reits','Reits')"
+            @click="cotacao(usa, 'cotacoes_usa', 'Reits')"
           >
             <i class="fas fa-file-upload text-danger"></i>
           </button>
@@ -63,7 +75,7 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cadastroAtivos(cadreits, 'reits','Cadastro Reits')"
+            @click="cadastroAtivos(cadreits, 'reits', 'Cadastro Reits')"
           >
             <i class="fas fa-file-upload text-danger"></i>
           </button>
@@ -74,13 +86,17 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cotacao(etfs,'cotacoes_etfs','ETFs')"
+            @click="cotacao(usa, 'cotacoes_usa', 'ETFs')"
           >
             <i class="fas fa-file-upload text-warning"></i>
           </button>
         </div>
         <div class="mb-3 col-2 text-warning">
-          <button class="btn btn-outline-secondary py-0 mx-2" type="button" @click="cadastroAtivos(cadetfs, 'etfs','Cadastro Etfs')">
+          <button
+            class="btn btn-outline-secondary py-0 mx-2"
+            type="button"
+            @click="cadastroAtivos(cadetfs, 'etfs', 'Cadastro Etfs')"
+          >
             <i class="fas fa-file-upload text-warning"></i>
           </button>
         </div>
@@ -90,7 +106,7 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cotacao(acoeseua,'cotacoes_acoeseua','Ações Americanas')"
+            @click="cotacao(usa, 'cotacoes_usa', 'Ações Americanas')"
           >
             <i class="fas fa-file-upload text-secondary"></i>
           </button>
@@ -99,7 +115,13 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cadastroAtivos(cadacoeseua, 'acoeseua','Cadastro Ações Americanas')"
+            @click="
+              cadastroAtivos(
+                cadacoeseua,
+                'acoeseua',
+                'Cadastro Ações Americanas'
+              )
+            "
           >
             <i class="fas fa-file-upload text-secondary"></i>
           </button>
@@ -110,7 +132,13 @@
           <button
             class="btn btn-outline-secondary py-0 mx-2"
             type="button"
-            @click="cadastroAtivos(cadsegtipo, 'segmentotipo','Cadastro Segmento Tipo')"
+            @click="
+              cadastroAtivos(
+                cadsegtipo,
+                'segmentotipo',
+                'Cadastro Segmento Tipo'
+              )
+            "
           >
             <i class="fas fa-file-upload"></i>
           </button>
@@ -123,10 +151,8 @@
 
 <script>
 import jsonAcoesBrl from "./respositorio/priceAcoesBrl.json";
-import jsonAcoesEua from "./respositorio/priceAcoesEua.json";
-import jsonEtfs from "./respositorio/priceEtfs.json";
+import jsonUsa from "./respositorio/priceUsa.json";
 import jsonFundos from "./respositorio/priceFundos.json";
-import jsonReits from "./respositorio/priceReits.json";
 import jsonCadAcoesBrl from "./respositorio/cadAcoesBrl.json";
 import jsonCadAcoesEua from "./respositorio/cadAcoesEua.json";
 import jsonCadEtfs from "./respositorio/cadEtfs.json";
@@ -137,10 +163,8 @@ export default {
   data() {
     return {
       acoesb3: jsonAcoesBrl,
-      acoeseua: jsonAcoesEua,
-      etfs: jsonEtfs,
+      usa: jsonUsa,
       fundos: jsonFundos,
-      reits: jsonReits,
       cadacoesb3: jsonCadAcoesBrl,
       cadacoeseua: jsonCadAcoesEua,
       cadetfs: jsonCadEtfs,
@@ -214,5 +238,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style scoped></style>

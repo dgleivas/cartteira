@@ -54,28 +54,28 @@ export default {
   },
   methods: {
     async doLogin() {
-      this.loading = true
+      this.loading = true;
       const { email, password } = this;
       await this.$firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then(res => {
           window.uid = res.user.uid;
-          this.$store.state.email = res.user.email
+          this.$store.state.email = res.user.email;
           this.$router.push({ name: "Home" });
         })
         .catch(err => {
           console.log(err);
         });
-        this.loading = false
+      this.loading = false;
     }
   },
-  beforeRouteEnter(to, from, next){
-    next(vm =>{
-      if(window.uid){
-        vm.$router.push({name: "Home"})
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (window.uid) {
+        vm.$router.push({ name: "Home" });
       }
-    })
+    });
   }
 };
 </script>
